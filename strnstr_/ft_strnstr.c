@@ -18,7 +18,7 @@ size_t    ft_strlen(const char *str)
     i = 0;
     while(str[i] != '\0')
     i++;
-    return(i+1);
+    return(i);
 }
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -35,11 +35,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return (char*)(big);
 	while (big[i] != '\0')
 	{
-		while (i <= len &&little[a] == big[i])    
+		while (i < len &&  little[a] == big[i])    
         	{	
 			i++;	         
 			a++;
-        		if(a == b)
+        		if(little[a] == '\0')
         		{		
         			res = &((char *)big)[i-b];
         			return (res);
@@ -52,14 +52,14 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 	
 }
-/*#include <stdio.h>
+#include <stdio.h>
 #include <bsd/string.h>
 int main()
 {
 	const char big[] = "needle in a haystack";
-	const char little[] = "haystackd";
-	size_t len = 50;
+	const char little[] = "hay";
+	size_t len = 15;
 	printf("%s",ft_strnstr(big,little,len));
 	printf("%s",strnstr(big,little,len));
 /*have to include -lbsd flag for compiler to find strnstr*/
-*/
+}
