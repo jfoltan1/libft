@@ -1,2 +1,3 @@
 strnstr ma stale problemy, kondicie +1 v strlen neviem ci su ok, tiez case kde big pokracuje a little konci treba testovat co Radek nasiel a vseobecne skonsolidovat kod 
+verify memmove/je napicu pretoze overlap sa stale deje 
 
