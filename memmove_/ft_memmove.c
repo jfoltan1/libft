@@ -10,31 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
-void	ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	
-	i = 0;
+	int	i;
 
-	char *nsrc;
-	char *ndest;
-	char temp[n];
-	nsrc = (char *)src;
-	ndest = (char*)dest;
-	
-	while (i < n && nsrc[i] != '\0')
+	if (src < dest)
 	{
-		temp[i] = nsrc[i];
-		i++;
+		i = (int)n - 1;
+		while (i >= 0)
+		{
+			*(char *)(dest + i) = *(char *)(src + i);
+			i--;
+		}
 	}	
-	i = 0;
-	while ( i < n && temp[i] != '\0')
+	else 
 	{
-		ndest[i] = temp[i];
-		i++;
+		i = 0;
+		while(i < (int)n)
+		{
+			*(char *)(dest + i) = *(char *)(src + i);
+			i++;
+		}
 	}
+	return(dest);
 }
-
+/*
 #include <stdio.h>
 #include <string.h>
 int main()
@@ -42,9 +42,8 @@ int main()
 	char dest[] = "Maybe I wont";
 	const char src[] = "Please work";
 	size_t n = 5;
-	//unsigned long t = 5;
-	ft_memmove(dest,src,n);
-	//memmove(dest,src,t);
+	//ft_memmove(dest,src,n);
+	memmove(dest,src,n);
 	printf("%s",dest);
 }
-
+*/
