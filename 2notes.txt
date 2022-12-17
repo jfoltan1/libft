@@ -1,2 +1,3 @@
-
+ft_strtrim fix strlen use 
+ft_strjoin fix strlen and test
 
