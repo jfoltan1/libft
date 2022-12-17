@@ -1,29 +1,15 @@
+#include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
 char	*ft_strdup(const char *s)
 {
 	size_t	i;
 	char *ptr;
-	
-	i = 0;
-	ptr = (char *) malloc(sizeof(s));
+
+	i = ft_strlen(s) + 1;
+	ptr = (char *) malloc(sizeof(char) * i);
 	if(!ptr)
 	return (NULL);
-	while (s[i])
-	{
-		ptr[i] = s[i];
-		i++;
-	}
-	ptr[i] = 0;
+	ptr = ft_memcpy(ptr,s,i);
 	return(ptr);
-}
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-	char str[]="ABCDEFGH";
-	printf("%p",ft_strdup(str));
-	printf("\n");
-	printf("%p",strdup(str));
-	
 }

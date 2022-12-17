@@ -9,6 +9,7 @@
 /*   Updated: 2022/11/29 17:19:47 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stdlib.h>
 int	ft_atoi(const char *nptr)
 {
@@ -34,12 +35,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (res * sign);
 }
-
-#include <stdio.h>
-int main()
-{
-	const char *nptr = "        +56h2";
-	printf("%d\n",ft_atoi(nptr));
-	printf("%d",atoi(nptr));
-}
-

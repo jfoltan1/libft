@@ -9,6 +9,7 @@
 /*   Updated: 2022/12/02 18:43:17 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <string.h>
 #include <stddef.h>
 char *ft_strchr(const char *s, int c)
@@ -29,12 +30,3 @@ char *ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*#include <stdio.h>
-int main()
-{
-	const char str[] = ""; 
-	int c = 0;
-	printf("%s",ft_strchr(str,c));
-	//printf("\n");
-	printf("%s",strchr(str,c));
-}*/

@@ -9,6 +9,7 @@
 /*   Updated: 2022/12/07 10:56:39 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 void	ft_bzero(void *s, size_t n)
 {
@@ -24,10 +25,3 @@ void	ft_bzero(void *s, size_t n)
 	}
 	s = se;
 }
-/*#include <stdio.h>
-int main()
-{
-	char str[]= "123456789";
-	ft_bzero(str,5);
-	printf("%s",str);
-}*/

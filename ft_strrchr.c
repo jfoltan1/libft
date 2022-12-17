@@ -9,34 +9,21 @@
 /*   Updated: 2022/12/02 19:02:11 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 #include <string.h>
 char	*ft_strrchr(const char *s,int c)
 {
 	int 	i;
-	const char *res;
 	
 	i = 0;
-	res = NULL;
-	while(s[i] != '\0')
-	{
-		if(s[i] == c)
-		res = &s[i];
-		
+	while(s[i])
 	i++;
-	}
-	if (s[i+1] == c)
+	while(i >= 0)
 	{
-		return(&((char *)s)[i+1]);
+		if(s[i] == (char)c)
+			return((char *)(s +i));
+	i--;
 	}
-	return(((char*)res));   
-}
-#include <stdio.h>
-int main()
-{
-	const char str[] = "ABCDEFAGH";
-	int c = 0;
-	printf("%s",ft_strrchr(str,c));
-	printf("\n");
-	printf("%s",strrchr(str,c));
+	return(NULL);
 }

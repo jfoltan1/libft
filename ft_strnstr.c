@@ -9,17 +9,9 @@
 /*   Updated: 2022/12/01 15:48:42 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 
-size_t    ft_strlen(const char *str)
-{
-    int i;
-    
-    i = 0;
-    while(str[i] != '\0')
-    i++;
-    return(i);
-}
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t    i;
@@ -52,14 +44,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 	
 }
-#include <stdio.h>
-#include <bsd/string.h>
+/*#include<stdio.h>
 int main()
 {
-	const char big[] = "needle in a haystack";
-	const char little[] = "hay";
-	size_t len = 15;
-	printf("%s",ft_strnstr(big,little,len));
-	printf("%s",strnstr(big,little,len));
-/*have to include -lbsd flag for compiler to find strnstr*/
-}
+	char const *str1 = "LOREM ipsum Dolores lmfaooo";
+	char const *str2 = "ipsum";
+
+	printf("%s", ft_strnstr(str1,str2,10));
+}*/

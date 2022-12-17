@@ -9,6 +9,7 @@
 /*   Updated: 2022/12/06 11:00:38 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -34,16 +35,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return(dest);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-	char dest[] = "Maybe I wont";
-	const char src[] = "Please work";
-	size_t n = 5;
-	//ft_memmove(dest,src,n);
-	memmove(dest,src,n);
-	printf("%s",dest);
-}
-*/

@@ -1,3 +1,4 @@
+#include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,7 +23,7 @@ char *ft_strtrim(char const *s1, char const *set)
 			i++;
 		a++;	
 		}
-		if (a == strlen(set))
+		if (a == strlen(set) && s1[i+1] != set)
 		ptr[b] = s1[i];
 	a = 0;
 	i++;
@@ -31,10 +32,10 @@ char *ft_strtrim(char const *s1, char const *set)
 	ptr[i] = 0;
 	return(ptr);	
 }
-#include <stdio.h>
+#include<stdio.h>
 int main()
 {
-	const char s1[] = "Hello";
-	const char set[] = "";
-	printf("%s",ft_strtrim(s1,set));
+	char *s1 ="22222a2b2c2d2e22222";
+	char a = '2';
+	printf("%s",ft_strtrim(s1,&a));	
 }

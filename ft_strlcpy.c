@@ -1,3 +1,4 @@
+#include "libft.h"
 #include <stddef.h>
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -17,13 +18,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	return(i);
 }
-#include <stdio.h>
-#include <bsd/string.h>
-int main()
-{
-	char dst[] = "Prosim ukaz mi";
-	const char src[] = "laska moja";
-	printf("%d", ft_strlcpy(dst,src,5));
-	printf("\n");
-	printf("%d", strlcpy(dst,src,5));
-}
+

@@ -9,26 +9,20 @@
 /*   Updated: 2022/12/07 15:58:01 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
+	char *dst = (char *)dest;
+	const char *source = (const char *)src; 
+	
 	size_t i;
 	
 	i = 0;
-	while (i < n && src > dest)
+	while (i < n)
 	{
-		*(char *)(dest+i) = *(char *)(src+i);
+		dst[i] = source[i];
 		i++;
 	}
 	return (dest);
-}
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-	char src[] = "Lessgooo";
-	char dest[50] = "";
-	printf("%s",(char *)ft_memcpy(dest,src,5));
-	printf("\n");
-	printf("%s",(char*)memcpy(dest,src,5));
 }

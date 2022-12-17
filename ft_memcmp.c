@@ -9,6 +9,7 @@
 /*   Updated: 2022/12/07 12:50:37 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
@@ -26,13 +27,4 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return(0);
 }
-/*#include <stdio.h>
-#include <string.h>
-int main()
-{
-	char s1[] = "ABCDEFGH";
-	char s2[] = "ABCDEFGH";
-	printf("%d", ft_memcmp(s1,s2,10));
-	printf("\n");
-	printf("%d", memcmp(s1,s2,10));
-}*/
+
