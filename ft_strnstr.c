@@ -15,28 +15,24 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	b;
+	size_t	len_l;
 	size_t	a;
-	char	*res;
 
-	b = ft_strlen(little);
+	len_l = ft_strlen(little);
 	i = 0;
 	a = 0;
-	if (little[i] == '\0')
-		return ((char*)(big));
-	while (big[i] != '\0')
+	if (little[a] == '\0')
+		return (((char *)big));
+	if (big[i] == '\0')
+		return (NULL);
+	while (big[i] && i < len)
 	{
-		while (i < len && little[a] == big[i])
+		a = 0;
+		while (big[i + a] && i + a < len && little[a] == big[i + a])
 		{
-			i++;
 			a++;
 			if (little[a] == '\0')
-			{
-				res = &((char *)big)[i - b];
-				return (res);
-			}
-			else if (little[a] != big[i])
-				a = 0;
+				return ((char *)big + i);
 		}
 		i++;
 	}
@@ -45,8 +41,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 /*#include<stdio.h>
 int main()
 {
-	char const *str1 = "LOREM ipsum Dolores lmfaooo";
-	char const *str2 = "ipsum";
+	char const *str1 = "aaabcabcd";
+	char const *str2 = "abcd";
 
-	printf("%s", ft_strnstr(str1,str2,10));
+	printf("%s", strnstr(str1,str2,9));
+	printf("\n");
+	printf("%s", ft_strnstr(str1,str2,9));
 }*/

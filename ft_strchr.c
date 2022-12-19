@@ -18,15 +18,15 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	if (s[i] == '\0')
-		return (&((char *)s)[i]);
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (char)c)
 			return (&((char *)s)[i]);
-		if (s[i + 1] == '\0' && s[i + 1] == c)
+		if (s[i + 1] == '\0' && s[i + 1] == (char)c)
 			return (&((char *)s)[i + 1]);
 		i++;
 	}
+	if (s[i] == (char)c)
+		return (&((char *)s)[i]);
 	return (NULL);
 }
