@@ -1,41 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfoltan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 18:21:50 by jfoltan           #+#    #+#             */
+/*   Updated: 2022/12/20 18:21:52 by jfoltan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-char *ft_strtrim(char const *s1, char const *set)
+
+static int	is_in_set(char c, char const *set)
 {
-	size_t i;
-	size_t a;
-	size_t b;
-	char *ptr;
-	
-	i = 0;
-	a = 0;
-	b = 0;
-	ptr = (char *)malloc(sizeof(s1));
-	if (!ptr)
-	return(NULL);
-	while(s1[i])
+	while (*set)
 	{
-		while(a != strlen(set))
-		{
-			if (set[a] == s1[i])
-			i++;
-		a++;	
-		}
-		if (a == strlen(set) && s1[i+1] != set)
-		ptr[b] = s1[i];
-	a = 0;
-	i++;
-	b++;
+		if (c == *set++)
+			return (1);
 	}
-	ptr[i] = 0;
-	return(ptr);	
+	return (0);
 }
-#include<stdio.h>
-int main()
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char *s1 ="22222a2b2c2d2e22222";
-	char a = '2';
-	printf("%s",ft_strtrim(s1,&a));	
+	size_t	start;
+	size_t	end;
+	size_t	i;
+	char	*ptr;
+
+	start = 0;
+	while (s1[start] && (is_in_set(s1[start], set) == 1))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && (is_in_set(s1[end - 1], set) == 1))
+		end--;
+	ptr = (char *)malloc(sizeof(*s1) * ((end - start) + 1));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (start < end)
+		ptr[i++] = s1[start++];
+	ptr[i] = 0;
+	return (ptr);
 }
