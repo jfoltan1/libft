@@ -1,3 +1,49 @@
 
 malloc syntax sa naucit.
 STATIC FUNCTIONS
+STRMAPI: also figure out a main to test .
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	size_t	i;
+	char	*ptr;
+
+	i = 0;
+	if (!s || !f) //with a variation of !*s || !*f it didnt work with empty strings. WHY.
+		return (NULL);
+	if (!(ptr = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return(NULL);
+	while (s[i]) //here with ptr[i] didnt work. WHY
+	{
+		ptr[i] = f(i, s[i]);
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+} 
+///////
+The write function has the following prototype:
+
+ssize_t write(int fd, const void *buf, size_t count);
+
+The first argument, fd, is the file descriptor of the file to which you want to write. The second argument, buf, is a pointer to the buffer containing the data to be written. The third argument, count, is the number of bytes to write.
+
+The write function returns the number of bytes that were successfully written, or -1 if an error occurred.
+
+Here is an example of using the write function to write a string to a file:
+
+#include <unistd.h>
+#include <fcntl.h>
+
+int main() {
+  // Open a file for writing
+  int fd = open("file.txt", O_WRONLY | O_CREAT, 0644);
+
+  // Write a string to the file
+  const char *str = "Hello, world!\n";
+  write(fd, str, strlen(str));
+
+  // Close the file
+  close(fd);
+  return 0;
+}
+

@@ -14,16 +14,19 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t	i;
 	char	*ptr;
-	
+
 	i = 0;
-	if (!*s || !*f)
+	if (!s || !f)
 		return (NULL);
-	ptr = (char *)malloc(strlen(s) + 1);
-	while (ptr[i])
+	ptr = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ptr)
+		return (NULL);
+	while (s[i])
 	{
 		ptr[i] = f(i, s[i]);
 		i++;
@@ -31,7 +34,6 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	ptr[i] = '\0';
 	return (ptr);
 }
-
 /*
 static char	ft_test(int c)
 {

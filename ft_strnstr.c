@@ -41,10 +41,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 /*#include<stdio.h>
 int main()
 {
-	char const *str1 = "aaabcabcd";
+	char const *str1 = "aaabcdaabcde";
 	char const *str2 = "abcd";
 
-	printf("%s", strnstr(str1,str2,9));
+	//printf("%s", strnstr(str1,str2,9));
 	printf("\n");
 	printf("%s", ft_strnstr(str1,str2,9));
 }*/
