@@ -29,9 +29,9 @@ void	ft_putnbr_fd(int n, int fd)
 		if (t > 10)
 		{
 			ft_putnbr_fd(t / 10, fd);
-			ft_putchar_fd((t % 10) + 48 , fd);
+			ft_putchar_fd((t % 10) + 48, fd);
 		}
 		if (t < 10)
-			ft_putchar_fd(t + 48, fd);
+			ft_putchar_fd((char)(t + 48), fd);
 	}
 }
