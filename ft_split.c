@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include <stdlib.h>
 #include "libft.h"
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
@@ -34,27 +35,33 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[j] = 0;
 	return (ptr);
 }
+
 int	ft_delicount(char const *s, char c)
 {
-	size_t	i;
-	size_t	f;
+	int	switcharoony;
+	int	a;
 
-	f = 0;
-	i = 0;
-	while (s[i])
+	switcharoony = 0;
+	a = 0;
+	while (*s)
 	{
-		if (s[i] == c)
-			f++;
-		i++;
+		if (*s != c && switcharoony == 0)
+		{
+			switcharoony = 1;
+			a++;
+		}
+		else if (*s == c)
+			switcharoony = 0;
+		s++;
 	}
-	return (f + 2);
+	return (a);
 }
 
 int	ft_sizecount(char const *s, char c, size_t i)
 {
 	size_t	d;
 
-	d = 1;
+	d = 0;
 	while (s[i] != c && s[i])
 	{
 		d++;
@@ -63,58 +70,49 @@ int	ft_sizecount(char const *s, char c, size_t i)
 	return (d);
 }
 
-char	*ft_alloc(size_t a)
+void	ft_freemebaby(char **ptr, int f)
 {
-	char	*ptr;
-
-	ptr = malloc(a * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	return (ptr);
-}
-
-char	**ft_arrayalloc(char const *s, char c)
-{
-	char	**ptr;
-
-	ptr = malloc(sizeof(char *) * ft_delicount(s, c));
-	if (!ptr)
-		return (NULL);
-	return (ptr);
+	while (f > -1)
+	{
+		free(ptr[f]);
+		f--;
+	}	
+	free(ptr);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
-	size_t	a;
-	size_t	f;
+	int	a;
+	int	f;
 	char	**ptr;
 
-	ptr = ft_arrayalloc(s, c);
 	a = ft_delicount(s, c);
-	f = 0;
+	f = -1;
 	i = 0;
-	while (a > 0)
+	ptr = (char **)malloc((a + 1) * sizeof(char *));
+	if (!ptr)
+		return (NULL);
+	while (f++ < a)
 	{
-		if (a != 1)
-			ptr[f] = ft_alloc(ft_sizecount(s, c, i));
-		if (a == 1)
-			ptr[f] = NULL;
 		while (s[i] == c)
 			i++;
 		ptr[f] = ft_substr(s, i, ft_sizecount(s, c, i));
-
+		if (!ptr[f])
+		{
+			ft_freemebaby(ptr, f);
+			return (NULL);
+		}
 		i = ft_sizecount(s, c, i) + i;
-		a--;
-		f++;
 	}
+	ptr[f] = NULL;
 	return (ptr);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main()
 {
-    const char s[] = "He ge de";
+    const char s[] = "Hs as ad as fs.";
     char c = ' ';
     char **ptr = ft_split(s,c);
     int i;
@@ -125,4 +123,4 @@ int main()
     printf("\n");
     i++;
     }
-}
+}*/
