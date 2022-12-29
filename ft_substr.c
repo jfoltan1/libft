@@ -13,15 +13,37 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+static int	ft_checklenght(char const *s, unsigned int start, size_t len)
+{
+	if (ft_strlen(s) < len + start)
+		return ((ft_strlen(s) - start));
+	else
+		return (len);
+}
+
+static char	*ft_nullmeup(void)
+{
+	char	*str;
+
+	str = malloc(sizeof(char));
+	if (str == 0)
+		return (NULL);
+	str[0] = '\0';
+	return (str);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
 	size_t			j;
 	char			*ptr;
 
+	len = ft_checklenght(s, start, len);
+	if (ft_strlen(s) < start)
+		return (ft_nullmeup());
 	i = 0;
 	j = 0;
-	ptr = (char *)malloc(sizeof(*s) * (len + 1));
+	ptr = (char *)malloc((len + 1) * sizeof(*s));
 	if (!ptr)
 		return (NULL);
 	while (s[i])

@@ -12,31 +12,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	unsigned int	i;
-	size_t			j;
-	char			*ptr;
-
-	i = 0;
-	j = 0;
-	ptr = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!ptr)
-		return (NULL);
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			ptr[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	ptr[j] = 0;
-	return (ptr);
-}
-
-int	ft_delicount(char const *s, char c)
+static int	ft_delicount(char const *s, char c)
 {
 	int	switcharoony;
 	int	a;
@@ -57,20 +33,20 @@ int	ft_delicount(char const *s, char c)
 	return (a);
 }
 
-int	ft_sizecount(char const *s, char c, size_t i)
+static int	ft_sizecount(char const *s, char c, int i)
 {
-	size_t	d;
+	int	d;
 
 	d = 0;
 	while (s[i] != c && s[i])
 	{
-		d++;
 		i++;
+		d++;
 	}
 	return (d);
 }
 
-void	ft_freemebaby(char **ptr, int f)
+static void	ft_freemebaby(char **ptr, int f)
 {
 	while (f > -1)
 	{
@@ -82,18 +58,18 @@ void	ft_freemebaby(char **ptr, int f)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	int	a;
-	int	f;
+	int		i;
+	int		a;
+	int		f;
 	char	**ptr;
 
-	a = ft_delicount(s, c);
-	f = -1;
 	i = 0;
+	f = -1;
+	a = ft_delicount(s, c);
 	ptr = (char **)malloc((a + 1) * sizeof(char *));
 	if (!ptr)
 		return (NULL);
-	while (f++ < a)
+	while (++f < a)
 	{
 		while (s[i] == c)
 			i++;
@@ -108,7 +84,6 @@ char	**ft_split(char const *s, char c)
 	ptr[f] = NULL;
 	return (ptr);
 }
-
 /*#include <stdio.h>
 int main()
 {
