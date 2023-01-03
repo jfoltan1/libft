@@ -15,10 +15,8 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	size_t	len_l;
 	size_t	a;
 
-	len_l = ft_strlen(little);
 	i = 0;
 	a = 0;
 	if (little[a] == '\0')
