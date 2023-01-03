@@ -46,4 +46,5 @@ int main() {
   close(fd);
   return 0;
 }
-
+"return ;" a return(0) vo void funkciach ako to funguje.
+function in a fucntion.. ft_lstdelone CELU ZNOVU POCHOPIT, aj lstclear

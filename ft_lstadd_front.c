@@ -9,6 +9,8 @@
 /*   Updated: 2022/12/29 15:17:38 by jfoltan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+
 void ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst)
